@@ -1,0 +1,567 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دکتر عادله کبریایی | دندانپزشک اطفال، ترمیمی و زیبایی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page-bg: #f4f8f7;
+    --card-bg: #eef6fb;
+    --header-green: #dcefe4;
+    --header-green-deep: #c7e6d5;
+    --coral: #e8646f;
+    --coral-deep: #c9454f;
+    --coral-soft: #fbe0df;
+    --mint: #a9d9c5;
+    --sky: #a9d2e8;
+    --ink: #2f4a4f;
+    --ink-soft: #6f8a8f;
+    --line: #dcebf2;
+    --shadow: 0 20px 45px -25px rgba(47, 74, 79, 0.35);
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    background: var(--page-bg);
+    font-family:'Vazirmatn', sans-serif;
+    color: var(--ink);
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding: 32px 16px 60px;
+  }
+
+  .card{
+    width:100%;
+    max-width:420px;
+    background: var(--card-bg);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    overflow:hidden;
+    border: 1px solid var(--line);
+  }
+
+  .header{
+    position:relative;
+    padding: 40px 24px 30px;
+    text-align:center;
+    background: var(--header-green);
+    border-bottom: 1px solid var(--header-green-deep);
+  }
+
+  .profile-photo{
+    width:96px;
+    height:96px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    position:relative;
+    overflow:hidden;
+    background: #fff;
+    border: 3px solid #ffffff;
+    box-shadow: 0 8px 20px -8px rgba(47,74,79,0.35);
+  }
+  .profile-photo img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    position:relative;
+    z-index:2;
+  }
+  .profile-placeholder{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    background: linear-gradient(150deg, var(--sky), var(--mint));
+    color: var(--ink);
+    z-index:1;
+  }
+  .profile-placeholder svg{ width:34px; height:34px; opacity:.8; }
+  .profile-placeholder span{ font-size:9px; font-weight:600; opacity:.75; }
+
+  .doctor-name{
+    font-family:'Lalezar', sans-serif;
+    font-weight:400;
+    font-size: 30px;
+    letter-spacing:.5px;
+    color: var(--ink);
+    margin: 0 0 6px;
+  }
+
+  .doctor-title{
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    opacity:.75;
+    margin:0;
+  }
+
+  .doctor-title span{
+    display:inline-block;
+    position:relative;
+    padding: 0 8px;
+  }
+  .doctor-title span:not(:last-child)::after{
+    content:'';
+    position:absolute;
+    left:-1px; top:3px; bottom:3px;
+    width:1px;
+    background: var(--ink);
+    opacity:.35;
+  }
+
+  .contact{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:10px;
+    padding: 20px 20px 6px;
+  }
+
+  .contact-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding: 12px 12px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    text-decoration:none;
+    color: var(--ink);
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .contact-item:active{ transform: scale(0.97); }
+  .contact-item:hover{ border-color: var(--coral); }
+
+  .contact-icon{
+    width:34px; height:34px;
+    flex:none;
+    border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    background: var(--coral-soft);
+    color: var(--coral-deep);
+  }
+  .contact-icon svg{ width:18px; height:18px; }
+
+  .contact-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.35;
+    overflow:hidden;
+  }
+  .contact-label{
+    font-size:11px;
+    color: var(--ink-soft);
+  }
+  .contact-value{
+    font-size:13px;
+    font-weight:600;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .contact-value.placeholder{
+    font-weight:400;
+    color: var(--ink-soft);
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding: 22px 24px 10px;
+  }
+  .divider .line{ flex:1; height:1px; background: var(--line); }
+  .divider .label{
+    font-size:13px;
+    font-weight:600;
+    color: var(--ink-soft);
+  }
+
+  .aftercare-intro{
+    padding: 0 24px 4px;
+    font-size:12.5px;
+    color: var(--ink-soft);
+    line-height:1.8;
+  }
+
+  .care-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:10px;
+    padding: 14px 20px 20px;
+  }
+
+  .care-trigger{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    padding: 13px 12px;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    cursor:pointer;
+    font-family:inherit;
+    text-align:right;
+    color: var(--ink);
+    transition: border-color .2s ease, transform .15s ease;
+  }
+  .care-trigger:hover{ border-color: var(--coral); }
+  .care-trigger:active{ transform: scale(0.97); }
+
+  .care-icon{
+    width:32px; height:32px;
+    flex:none;
+    border-radius:9px;
+    display:flex; align-items:center; justify-content:center;
+    background: var(--coral-soft);
+    color: var(--coral-deep);
+  }
+  .care-icon svg{ width:17px; height:17px; }
+
+  .care-title{
+    font-size:12.5px;
+    font-weight:600;
+    line-height:1.3;
+  }
+
+  .care-trigger.center{
+    grid-column: 1 / -1;
+    width: calc(50% - 5px);
+    margin: 0 auto;
+    justify-content:center;
+    text-align:center;
+  }
+
+  .logo-section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    padding: 4px 20px 24px;
+  }
+  .logo-slot{
+    width:88px;
+    height:88px;
+    border-radius: 18px;
+    position:relative;
+    overflow:hidden;
+    background:#ffffff;
+    border: 1.5px dashed var(--line);
+  }
+  .logo-slot img{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+    position:relative;
+    z-index:2;
+    padding:8px;
+  }
+  .logo-placeholder{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    color: var(--ink-soft);
+    z-index:1;
+  }
+  .logo-placeholder svg{ width:26px; height:26px; opacity:.6; }
+  .logo-placeholder span{ font-size:9px; font-weight:600; }
+
+  .footer{
+    text-align:center;
+    padding: 6px 20px 26px;
+    font-size:11px;
+    color: var(--ink-soft);
+  }
+
+  .modal-backdrop{
+    position:fixed;
+    inset:0;
+    background: rgba(47,74,79,0.45);
+    backdrop-filter: blur(2px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding: 20px;
+    z-index: 50;
+    opacity:0;
+    transition: opacity .22s ease;
+  }
+  .modal-backdrop.open{
+    display:flex;
+    opacity:1;
+  }
+
+  .modal-card{
+    width:100%;
+    max-width: 380px;
+    background: var(--card-bg);
+    border-radius: 26px;
+    box-shadow: 0 30px 60px -20px rgba(47,74,79,0.5);
+    overflow:hidden;
+    transform: translateY(14px) scale(.97);
+    transition: transform .25s ease;
+  }
+  .modal-backdrop.open .modal-card{
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-top{
+    position:relative;
+    padding: 30px 24px 22px;
+    text-align:center;
+    background: var(--header-green);
+  }
+
+  .modal-close{
+    position:absolute;
+    top:14px; left:14px;
+    width:30px; height:30px;
+    border-radius:50%;
+    border:none;
+    background: rgba(255,255,255,0.8);
+    color: var(--ink);
+    font-size:16px;
+    line-height:1;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+  }
+  .modal-close:hover{ background:#fff; }
+
+  .modal-icon{
+    width:56px; height:56px;
+    margin: 0 auto 12px;
+    border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    background: var(--coral-soft);
+    color: var(--coral-deep);
+  }
+  .modal-icon svg{ width:28px; height:28px; }
+
+  .modal-title{
+    font-family:'Lalezar', sans-serif;
+    font-weight:400;
+    font-size: 22px;
+    margin:0;
+    color: var(--ink);
+  }
+
+  .modal-body{
+    padding: 22px 24px 28px;
+    font-size:13.5px;
+    line-height:2;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="header">
+    <div class="profile-photo">
+      <img src="profile.jpg" alt="عکس پروفایل دکتر عادله کبریایی" onerror="this.style.display='none'">
+      <div class="profile-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="3.6"/>
+          <path d="M4.5 20c1.4-4 4.2-6 7.5-6s6.1 2 7.5 6"/>
+        </svg>
+        <span>عکس پروفایل</span>
+      </div>
+    </div>
+    <h1 class="doctor-name">دکتر عادله کبریایی</h1>
+    <p class="doctor-title">
+      <span>دندانپزشک اطفال</span><span>ترمیمی</span><span>زیبایی</span>
+    </p>
+  </div>
+
+  <div class="contact">
+
+    <a class="contact-item" href="https://t.me/">
+      <span class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 2 11 13"/>
+          <path d="M22 2 15 22l-4-9-9-4 20-7Z"/>
+        </svg>
+      </span>
+      <span class="contact-text">
+        <span class="contact-label">تلگرام</span>
+        <span class="contact-value placeholder">آیدی تلگرام</span>
+      </span>
+    </a>
+
+    <a class="contact-item" href="#">
+      <span class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="4" width="16" height="16" rx="5"/>
+          <circle cx="12" cy="12" r="3.4"/>
+          <circle cx="16.8" cy="7.2" r="0.6" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <span class="contact-text">
+        <span class="contact-label">اینستاگرام</span>
+        <span class="contact-value placeholder">آیدی پیج</span>
+      </span>
+    </a>
+
+    <a class="contact-item" href="#">
+      <span class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16v12H8l-4 4V4Z"/>
+          <path d="M8.5 10l2 2 4-4"/>
+        </svg>
+      </span>
+      <span class="contact-text">
+        <span class="contact-label">بله</span>
+        <span class="contact-value placeholder">آیدی بله</span>
+      </span>
+    </a>
+
+    <a class="contact-item" href="#">
+      <span class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16v12H8l-4 4V4Z"/>
+          <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="12" cy="10" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <span class="contact-text">
+        <span class="contact-label">ایتا</span>
+        <span class="contact-value placeholder">آیدی ایتا</span>
+      </span>
+    </a>
+
+  </div>
+
+  <div class="divider">
+    <span class="label">مراقبت‌های بعد از درمان</span>
+    <span class="line"></span>
+  </div>
+  <p class="aftercare-intro">روی هر آیکون بزن تا راهنمای همون درمان توی یک کارت جدا باز بشه.</p>
+
+  <div class="care-grid" id="careGrid"></div>
+
+  <div class="logo-section">
+    <div class="logo-slot">
+      <img src="logo.png" alt="لوگوی مطب" onerror="this.style.display='none'">
+      <div class="logo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3.5" y="3.5" width="17" height="17" rx="4"/>
+          <circle cx="9" cy="9.5" r="1.7"/>
+          <path d="M4.5 17.5 9 13l3 3 4-4.5 3.5 4"/>
+        </svg>
+        <span>لوگو</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">دکتر عادله کبریایی — دندانپزشک اطفال، ترمیمی و زیبایی</div>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-top">
+      <button class="modal-close" id="modalClose" aria-label="بستن">×</button>
+      <div class="modal-icon" id="modalIcon"></div>
+      <h3 class="modal-title" id="modalTitle"></h3>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const careInstructions = [
+  {
+    title: "کشیدن دندان",
+    icon: "tooth",
+    text: "بعد از درمان به راهنمایی‌های دکتر عمل کنید. (این متن رو با توضیحات واقعی جایگزین کنید)"
+  },
+  {
+    title: "ترمیم دندان",
+    icon: "shield",
+    text: "بعد از درمان به راهنمایی‌های دکتر عمل کنید. (این متن رو با توضیحات واقعی جایگزین کنید)"
+  },
+  {
+    title: "بلیچینگ و زیبایی",
+    icon: "spark",
+    text: "بعد از درمان به راهنمایی‌های دکتر عمل کنید. (این متن رو با توضیحات واقعی جایگزین کنید)"
+  },
+  {
+    title: "دندانپزشکی اطفال",
+    icon: "kid",
+    text: "بعد از درمان به راهنمایی‌های دکتر عمل کنید. (این متن رو با توضیحات واقعی جایگزین کنید)"
+  },
+  {
+    title: "درمان دیگر",
+    icon: "generic",
+    text: "این بخش رو با عنوان و توضیح درمان مورد نظرت جایگزین کن.",
+    center: true
+  }
+];
+
+const icons = {
+  tooth: '<path d="M12 4.5c-2.1 0-3.3 1-4.3 1-1.3 0-2.1 1.1-2.1 2.8 0 3-1.3 7.8-2.5 9.2-.6.7-1.1.9-1.5.2-.4-.7-.6-3.5-1.4-3.5H8.7c-.8 0-1 2.8-1.4 3.5" />',
+  shield: '<path d="M12 3.5 5 6v5.5c0 4.8 3 8 7 9 4-1 7-4.2 7-9V6l-7-2.5Z"/><path d="M9 12.2l2 2 4-4.2"/>',
+  spark: '<path d="M12 4l1.6 4.4L18 10l-4.4 1.6L12 16l-1.6-4.4L6 10l4.4-1.6L12 4Z"/>',
+  kid: '<circle cx="12" cy="8.5" r="3.2"/><path d="M6 20c.7-3.6 3-5.5 6-5.5s5.3 1.9 6 5.5"/>',
+  generic: '<circle cx="12" cy="12" r="7.5"/><path d="M12 8.3v4l2.6 1.5"/>'
+};
+
+const grid = document.getElementById('careGrid');
+const backdrop = document.getElementById('modalBackdrop');
+const modalIcon = document.getElementById('modalIcon');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalClose = document.getElementById('modalClose');
+
+function iconSvg(name){
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${icons[name] || icons.generic}</svg>`;
+}
+
+function openModal(item){
+  modalIcon.innerHTML = iconSvg(item.icon);
+  modalTitle.textContent = item.title;
+  modalBody.textContent = item.text;
+  backdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(){
+  backdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+careInstructions.forEach(item => {
+  const btn = document.createElement('button');
+  btn.className = 'care-trigger' + (item.center ? ' center' : '');
+  btn.innerHTML = `
+    <span class="care-icon">${iconSvg(item.icon)}</span>
+    <span class="care-title">${item.title}</span>
+  `;
+  btn.addEventListener('click', () => openModal(item));
+  grid.appendChild(btn);
+});
+
+modalClose.addEventListener('click', closeModal);
+backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+</script>
+
+</body>
+</html>
